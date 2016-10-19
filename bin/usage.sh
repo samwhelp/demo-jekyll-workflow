@@ -9,11 +9,11 @@ usage()
 	echo
 	cat <<EOF
 Ex:
-$ make ruby-prepare
 
 $ make rbenv-install
 $ make rbenv-update
 
+$ make ruby-build-dep
 $ make ruby-install
 
 $ make jekyll-install

@@ -3,7 +3,7 @@ THE_MAKEFILE_FILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 THE_BASE_DIR_PATH := $(abspath $(dir $(THE_MAKEFILE_FILE_PATH)))
 THE_BIN_DIR_PATH := $(THE_BASE_DIR_PATH)/bin
 
-.PHONY: usage rbenv-install rbenv-update ruby-build-prepare ruby-install jekyll-install bundle-install blog-create serve build add commit push status log git-clone git-user-config
+.PHONY: usage rbenv-install rbenv-update ruby-build-dep ruby-install jekyll-install bundle-install blog-create serve build add commit push status log git-clone git-user-config
 
 usage:
 	@$(THE_BIN_DIR_PATH)/usage.sh
@@ -14,8 +14,8 @@ rbenv-install:
 rbenv-update:
 	@$(THE_BIN_DIR_PATH)/rbenv-update.sh
 
-ruby-build-prepare:
-	@$(THE_BIN_DIR_PATH)/ruby-build-prepare.sh
+ruby-build-dep:
+	@$(THE_BIN_DIR_PATH)/ruby-build-dep.sh
 
 ruby-install:
 	@$(THE_BIN_DIR_PATH)/ruby-install.sh

@@ -25,6 +25,14 @@ if ! [ -a $THE_RBENV_GIT_DIR_PATH ]; then
 fi
 
 
+## rbenv plugin / ruby-build
+## https://github.com/rbenv/ruby-build
+if ! [ -a $THE_RBENV_RUBY_BUILD_GIT_DIR_PATH ]; then
+	## git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+	git clone $THE_RBENV_RUBY_BUILD_GIT_URL $THE_RBENV_RUBY_BUILD_GIT_DIR_PATH
+fi
+
+
 ## rbenv setting
 if ! exist_setting; then
 	echo >> $THE_BASHRC_FILE_PATH
@@ -32,12 +40,6 @@ if ! exist_setting; then
 	echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $THE_BASHRC_FILE_PATH
 	echo 'eval "$(rbenv init -)"' >> $THE_BASHRC_FILE_PATH
 	echo >> $THE_BASHRC_FILE_PATH
-fi
 
-
-## rbenv plugin / ruby-build
-## https://github.com/rbenv/ruby-build
-if ! [ -a $THE_RBENV_RUBY_BUILD_GIT_DIR_PATH ]; then
-	## git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-	git clone $THE_RBENV_RUBY_BUILD_GIT_URL $THE_RBENV_RUBY_BUILD_GIT_DIR_PATH
+	source $THE_BASHRC_FILE_PATH
 fi
