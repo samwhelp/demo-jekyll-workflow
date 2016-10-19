@@ -37,6 +37,22 @@ $ make rbenv-install
 
 然後重新進到bash環境，或是直接執行「source ~/.bashrc」。
 
+## 安裝「編譯ruby需要的套件」
+
+執行
+
+``` sh
+$ make ruby-build-dep
+```
+
+## 透過 rbenv 安裝 ruby
+
+執行
+
+``` sh
+$ make ruby-install
+```
+
 ## 透過 rbenv 安裝 ruby
 
 執行
@@ -58,7 +74,7 @@ $ make jekyll-install
 執行
 
 ``` sh
-$ make create
+$ make blog-create
 ```
 
 ## 啟動 web server

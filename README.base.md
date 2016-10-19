@@ -23,12 +23,6 @@
 $ sudo apt-get intall git
 ```
 
-安裝「編譯ruby需要的套件」
-
-``` sh
-$ sudo apt-get build-dep ruby
-```
-
 ## 安裝 rbenv
 
 > 註：「rbenv」更詳細的使用說明，請參考「rbenv / [rbenv](https://github.com/rbenv/rbenv)」和「rbenv / [ruby-build](https://github.com/rbenv/ruby-build)」的說明。
@@ -52,6 +46,74 @@ $ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 ```
 
 然後重新進到bash環境，或是直接執行「source ~/.bashrc」。
+
+
+## 安裝「編譯ruby需要的套件」
+
+執行下面指令，安裝「編譯ruby需要的套件」
+
+``` sh
+$ sudo apt-get install build-essential debhelper libssl-dev libreadline-dev zlib1g-dev
+```
+
+本來想執行「sudo apt-get build-dep ruby」來安裝「編譯ruby需要的套件」，
+不過後來利用新安裝的系統，來測試下面「透過rbenv安裝ruby」，
+
+會顯示
+
+```
+Downloading ruby-2.3.1.tar.bz2...
+-> https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.1.tar.bz2
+Installing ruby-2.3.1...
+
+BUILD FAILED (Ubuntu 16.04 using ruby-build 20160913-13-g8ef0c34)
+
+Inspect or clean up the working tree at /tmp/ruby-build.20161019094533.5808
+Results logged to /tmp/ruby-build.20161019094533.5808.log
+
+Last 10 log lines:
+The Ruby openssl extension was not compiled.
+The Ruby readline extension was not compiled.
+The Ruby zlib extension was not compiled.
+ERROR: Ruby install aborted due to missing extensions
+Try running `apt-get install -y libssl-dev libreadline-dev zlib1g-dev` to fetch missing dependencies.
+
+Configure options used:
+  --prefix=/home/user/.rbenv/versions/2.3.1
+  LDFLAGS=-L/home/user/.rbenv/versions/2.3.1/lib
+  CPPFLAGS=-I/home/user/.rbenv/versions/2.3.1/include
+rbenv: version `2.3.1' not installed
+Makefile:21: recipe for target 'ruby-install' failed
+make: *** [ruby-install] Error 1
+```
+
+從上面的訊息，可以看到「Try running `apt-get install -y libssl-dev libreadline-dev zlib1g-dev` to fetch missing dependencies.」
+
+執行下面指令
+
+``` sh
+$ apt-cache showsrc ruby | grep Build-Depends:
+```
+
+顯示
+
+```
+Build-Depends: debhelper (>= 9)
+```
+
+也就是執行「sudo apt-get build-dep ruby」，應該是安裝「[debhelper](http://packages.ubuntu.com/xenial/debhelper)」這個套件。
+
+執行下面指令
+
+``` sh
+$ apt-cache show debhelper | grep Depends:
+```
+
+顯示
+
+```
+Depends: perl, file (>= 3.23), dpkg (>= 1.16.2), dpkg-dev (>= 1.18.2~), binutils, po-debconf, man-db (>= 2.5.1-1), libdpkg-perl (>= 1.17.14), dh-strip-nondeterminism, autotools-dev
+```
 
 
 ## 透過 rbenv 安裝 ruby
