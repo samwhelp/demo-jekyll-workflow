@@ -37,6 +37,7 @@ $ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 
 ``` sh
 $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+$ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 ```
 
 執行
