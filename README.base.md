@@ -40,7 +40,7 @@ $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 $ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 ```
 
-額外參考下面的「註一」說明。
+> 額外參考下面的「[註一](#註ㄧ)」說明。
 
 
 執行
@@ -51,7 +51,7 @@ $ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 然後重新進到bash環境，或是直接執行「source ~/.bashrc」。
 
-額外參考下面的「註二」說明。
+> 額外參考下面的「[註二](#註二)」說明。
 
 
 ## 安裝「編譯ruby需要的套件」
@@ -62,7 +62,7 @@ $ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 $ sudo apt-get install build-essential debhelper libssl-dev libreadline-dev zlib1g-dev
 ```
 
-額外參考下面的「註三」說明。
+> 額外參考下面的「[註三](#註三)」說明。
 
 
 或是參考「ruby-build / wiki / [Suggested build environment](https://github.com/rbenv/ruby-build/wiki#suggested-build-environment)」，
