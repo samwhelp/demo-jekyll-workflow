@@ -3,55 +3,75 @@ THE_MAKEFILE_FILE_PATH := $(abspath $(lastword $(MAKEFILE_LIST)))
 THE_BASE_DIR_PATH := $(abspath $(dir $(THE_MAKEFILE_FILE_PATH)))
 THE_BIN_DIR_PATH := $(THE_BASE_DIR_PATH)/bin
 
-.PHONY: usage rbenv-install rbenv-update ruby-build-dep ruby-install jekyll-install bundle-install blog-create serve build add commit push status log git-clone git-user-config
+PATH := $(THE_BIN_DIR_PATH):$(PATH)
 
-usage:
-	@$(THE_BIN_DIR_PATH)/usage.sh
+default: help
+.PHONY: default
+
+help:
+	@help.sh
+.PHONY: help
 
 rbenv-install:
-	@$(THE_BIN_DIR_PATH)/rbenv-install.sh
+	@rbenv-install.sh
+.PHONY: rbenv-install
 
 rbenv-update:
-	@$(THE_BIN_DIR_PATH)/rbenv-update.sh
+	@rbenv-update.sh
+.PHONY: rbenv-update
 
 ruby-build-dep:
-	@$(THE_BIN_DIR_PATH)/ruby-build-dep.sh
+	@ruby-build-dep.sh
+.PHONY: ruby-build-dep
 
 ruby-install:
-	@$(THE_BIN_DIR_PATH)/ruby-install.sh
+	@ruby-install.sh
+.PHONY: ruby-install
 
 jekyll-install:
-	@$(THE_BIN_DIR_PATH)/jekyll-install.sh
+	@jekyll-install.sh
+.PHONY: jekyll-install
 
 bundle-install:
-	@$(THE_BIN_DIR_PATH)/bundle-install.sh
+	@bundle-install.sh
+.PHONY: bundle-install
 
 blog-create:
-	@$(THE_BIN_DIR_PATH)/blog-create.sh
+	@blog-create.sh
+.PHONY: blog-create
 
 serve:
-	@$(THE_BIN_DIR_PATH)/blog-serve.sh
+	@blog-serve.sh
+.PHONY: serve
 
 build:
-	@$(THE_BIN_DIR_PATH)/blog-build.sh
+	@blog-build.sh
+.PHONY: build
 
 add:
-	@$(THE_BIN_DIR_PATH)/git-add.sh
+	@git-add.sh
+.PHONY: add
 
 commit:
-	@$(THE_BIN_DIR_PATH)/git-commit.sh
+	@git-commit.sh
+.PHONY: commit
 
 push:
-	@$(THE_BIN_DIR_PATH)/git-push.sh
+	@git-push.sh
+.PHONY: push
 
 status:
-	@$(THE_BIN_DIR_PATH)/git-status.sh
+	@git-status.sh
+.PHONY: status
 
 log:
-	@$(THE_BIN_DIR_PATH)/git-log.sh
+	@git-log.sh
+.PHONY: log
 
 git-clone:
-	@$(THE_BIN_DIR_PATH)/git-clone.sh
+	@git-clone.sh
+.PHONY: git-clone
 
 git-user-config:
-	@$(THE_BIN_DIR_PATH)/git-user-config.sh
+	@git-user-config.sh
+.PHONY: git-user-config
